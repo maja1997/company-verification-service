@@ -1,7 +1,7 @@
-package com.example.companyverifier.thirdparty.free.service;
+package com.example.companyverifier.thirdparty.premium.service;
 
 import com.example.companyverifier.thirdparty.common.JsonDataLoader;
-import com.example.companyverifier.thirdparty.free.model.FreeCompanyRecord;
+import com.example.companyverifier.thirdparty.premium.model.PremiumCompanyRecord;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,25 +11,25 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FreeCompanyServiceTest {
+public class PremiumCompanyServiceTest {
 
-    private FreeCompanyService service;
+    private PremiumCompanyService service;
 
     @BeforeEach
     void setUp() {
         JsonDataLoader loader = new JsonDataLoader(new ObjectMapper());
-        service = new FreeCompanyService(loader);
+        service = new PremiumCompanyService(loader);
     }
 
     @Test
     void shouldReturnMatchingCompaniesByCinQuery() {
-        List<FreeCompanyRecord> results = service.getCompaniesByIdFragment("CJQ");
+        List<PremiumCompanyRecord> results = service.getCompaniesByIdFragment("CJQ");
         assertFalse(results.isEmpty(), "Should return matching companies for provided id fragment");
     }
 
     @Test
     void shouldReturnEmptyListWhenNoMatchingCompanyFound() {
-        List<FreeCompanyRecord> results = service.getCompaniesByIdFragment("NonMatchingFragment");
+        List<PremiumCompanyRecord> results = service.getCompaniesByIdFragment("NonMatchingFragment");
         assertTrue(results.isEmpty(), "Should return empty list for non matching id fragment");
     }
 

@@ -1,7 +1,7 @@
-package com.example.companyverifier.thirdparty.free.controller;
+package com.example.companyverifier.thirdparty.premium.controller;
 
-import com.example.companyverifier.thirdparty.free.model.FreeCompanyRecord;
-import com.example.companyverifier.thirdparty.free.service.FreeCompanyService;
+import com.example.companyverifier.thirdparty.premium.model.PremiumCompanyRecord;
+import com.example.companyverifier.thirdparty.premium.service.PremiumCompanyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,19 +13,19 @@ import java.util.List;
 import java.util.Random;
 
 @RestController
-@RequestMapping("/free-third-party")
-public class FreeApiController {
+@RequestMapping("/premium-third-party")
+public class PremiumApiController {
 
-    private final FreeCompanyService companyService;
+    private final PremiumCompanyService companyService;
     private final Random random = new Random();
 
-    public FreeApiController(FreeCompanyService companyService) {
+    public PremiumApiController(PremiumCompanyService companyService) {
         this.companyService = companyService;
     }
 
     @GetMapping
-    public ResponseEntity<List<FreeCompanyRecord>> getCompaniesByIdFragment(@RequestParam("query") String idFragment) {
-        if (random.nextDouble() < 0.4) {
+    public ResponseEntity<List<PremiumCompanyRecord>> getCompaniesByIdFragment(@RequestParam("query") String idFragment) {
+        if (random.nextDouble() < 0.1) {
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).build();
         }
 
